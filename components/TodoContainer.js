@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 const TodoContainer = () => {
-    return <main className="flex flex-col relative z-10 w-1/2 p-4 m-auto text-white gap-7">
+    return <main className="flex flex-col relative z-10 w-1/2 p-4 m-auto -mt-52 text-white gap-7">
         <div className="inline-flex align-middle">
             <h1 className="text-3xl font-bold tracking-widdest">TODO</h1>
             <div className="ml-auto">
@@ -23,6 +23,7 @@ const TodoContainer = () => {
                         <span className="absolute top-0 left-0 h-6 w-6 border-slate-600 border-2 rounded-full "></span>
                     </div>
                     <span className="text-black ml-10 align-middle">Todo List</span>
+                    <button className="ml-auto text-black text-xl">&#x2715;</button>
                 </div>
             </div>
             <footer className="flex p-4 text-black gap-6 text-sm">

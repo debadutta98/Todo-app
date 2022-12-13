@@ -547,10 +547,6 @@ video {
   margin-top: 1.5rem;
 }
 
-.-mt-48{
-  margin-top: -12rem;
-}
-
 .ml-auto{
   margin-left: auto;
 }
@@ -559,8 +555,12 @@ video {
   margin-left: 2.5rem;
 }
 
-.-mt-40{
-  margin-top: -10rem;
+.-mt-48{
+  margin-top: -12rem;
+}
+
+.-mt-52{
+  margin-top: -13rem;
 }
 
 .block{
@@ -575,10 +575,6 @@ video {
   display: inline-flex;
 }
 
-.h-3\/4{
-  height: 75%;
-}
-
 .h-0{
   height: 0px;
 }
@@ -587,16 +583,16 @@ video {
   height: 1.5rem;
 }
 
-.h-60{
-  height: 15rem;
+.h-64{
+  height: 16rem;
 }
 
-.h-\[100vw\]{
-  height: 100vw;
+.h-3\/4{
+  height: 75%;
 }
 
-.h-1\/2{
-  height: 50%;
+.min-h-full{
+  min-height: 100%;
 }
 
 .w-1\/2{
@@ -677,6 +673,10 @@ video {
   background-image: url(../public/images/bg-desktop-light.jpg);
 }
 
+.bg-contain{
+  background-size: contain;
+}
+
 .bg-cover{
   background-size: cover;
 }
@@ -706,14 +706,19 @@ video {
   line-height: 2.25rem;
 }
 
-.text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold{
