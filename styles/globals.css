@@ -3,6 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     font-family: Josefin Sans;
+    font-size: 18px;
+}
+
+.item {
+    @apply p-4 cursor-pointer;
+}
+
+.delete {
+    @apply ml-auto text-xl hidden text-light-darkGrayishBlue;
+}
+
+.item:hover .delete {
+    @apply inline;
 }
