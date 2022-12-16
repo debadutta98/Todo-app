@@ -8,11 +8,12 @@ export default async function handler(req,res) {
             console.log('mongoDb connected');
         })
         .catch((err)=>{
-            console.log('err');
+            console.log(err);
         });
         await TodoModal.deleteMany().then(()=>{
             res.status(202).end();
-        }).catch(()=>{
+        }).catch((err)=>{
+            console.log(err);
             res.status(404).end();
         }).finally(async ()=>{
             await mongoose.disconnect();

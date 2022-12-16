@@ -10,8 +10,8 @@ export default async function handler(req, res) {
         await TodoModal.deleteOne({_id: req.body.listId}).then(async ()=>{
             res.status(202).end();
         }).catch((error)=>{
-            res.status(404).end();
             console.log(error);
+            res.status(404).end();
         }).finally(async ()=>{
             await mongoose.disconnect();
         });

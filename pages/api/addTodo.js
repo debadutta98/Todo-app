@@ -19,6 +19,8 @@ export default function handler(req, res) {
         }).catch((reason) => {
             console.log(reason);
             res.status(403).json({ message: 'DB connection error' });
+        }).finally(async ()=>{
+            await mongoose.disconnect();
         })
     }
 }
