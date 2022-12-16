@@ -3,7 +3,10 @@ import { toast } from "react-toastify";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import TodoItem from "./TodoItem";
 import { useRef, useState } from "react";
-const TodoContainer = () => {
+import Link from "next/link";
+import { useRouter } from "next/router";
+const TodoContainer = ({todoList}) => {
+    const router = useRouter();
     const [newTodo, setNewTodo] = useState("");
     const [toggle, setToggle] = useState(false);
     const inputCheckRef = useRef();
@@ -47,6 +50,7 @@ const TodoContainer = () => {
             inputTextRef.current.disabled = false;
         }
     }
+    const listItems = JSON.parse(todoList);
     return (
         <main className="flex flex-col relative z-10 w-1/2 p-4 m-auto -mt-52 text-white gap-7">
             <div className="inline-flex align-middle">
@@ -81,15 +85,15 @@ const TodoContainer = () => {
                 </div>
             </form>
             <div className="bg-white w-full rounded shadow-md divide-y">
-                <TodoItem items={[{ name: "Todo List" }]} />
+               <TodoItem items={listItems} />
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
-                    <span>5 items Left</span>
+                    <span>{listItems.length} items Left</span>
                     <div className="flex gap-4 m-auto">
-                        <button>All</button>
-                        <button>Active</button>
-                        <button>Completed</button>
+                        <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`}>All</Link>
+                        <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`}>Active</Link>
+                        <Link href='/completed' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/completed' ? "text-[#0066ff]" : ''}`}>Completed</Link>
                     </div>
-                    <button>Clear Completed</button>
+                    <button className='hover:font-bold truncate'>Clear Completed</button>
                 </footer>
             </div>
         </main>
