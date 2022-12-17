@@ -731,8 +731,3 @@ body {
   --tw-text-opacity: 1;
   color: hsl(235 19% 35% / var(--tw-text-opacity));
 }
-
-.active\:text-\[\#0066ff\]:active{
-  --tw-text-opacity: 1;
-  color: rgb(0 102 255 / var(--tw-text-opacity));
-}

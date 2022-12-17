@@ -10,7 +10,9 @@ export default async function handler(req, res) {
             .catch((err) => {
                 console.log(err);
             });
-        await TodoModal.updateOne({_id: req.body.itemId}).then(() => {
+        await TodoModal.updateOne({ _id: req.body.itemId }, {
+            isCompleted: req.body.isCompleted
+        }).then(() => {
             res.status(200).end();
         }).catch(() => {
             res.status(404).end();

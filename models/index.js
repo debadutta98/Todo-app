@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+mongoose.set('strictQuery', true);
 const todoListSchema = new mongoose.Schema({
     name: String,
     isCompleted: Boolean

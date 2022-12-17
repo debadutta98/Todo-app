@@ -9,6 +9,7 @@ const TodoContainer = ({todoList}) => {
     const router = useRouter();
     const [newTodo, setNewTodo] = useState("");
     const [toggle, setToggle] = useState(false);
+    const [lock, setLock] = useState(false);
     const inputCheckRef = useRef();
     const inputTextRef = useRef();
     const onChangeTodoInputHandler = (event) => {
@@ -51,6 +52,30 @@ const TodoContainer = ({todoList}) => {
         }
     }
     const listItems = JSON.parse(todoList);
+    const deleteAllItems = async () => {
+        setLock(true);
+        try {
+            const result = await fetch('/api/deleteAll',{
+                method:'DELETE'
+            })
+            if(result.ok || result.status === 202) {
+                toast('Delete All todos successfully',{
+                    type:'success'
+                });
+            } else {
+                toast('There is some problem please try again', {
+                    type: 'error'
+                });
+            }
+        } catch(err){
+            console.log(err);
+            toast('Error please try again!!',{
+                type:'error'
+            })
+        } finally {
+            setLock(false);
+        }
+    };
     return (
         <main className="flex flex-col relative z-10 w-1/2 p-4 m-auto -mt-52 text-white gap-7">
             <div className="inline-flex align-middle">
@@ -93,7 +118,7 @@ const TodoContainer = ({todoList}) => {
                         <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`}>Active</Link>
                         <Link href='/completed' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/completed' ? "text-[#0066ff]" : ''}`}>Completed</Link>
                     </div>
-                    <button className='hover:font-bold truncate'>Clear Completed</button>
+                    <button className='hover:font-bold truncate' onClick={deleteAllItems} disabled={lock}>Clear Completed</button>
                 </footer>
             </div>
         </main>
