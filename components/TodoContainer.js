@@ -2,16 +2,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import TodoItem from "./TodoItem";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Reorder } from "framer-motion";
 const TodoContainer = ({todoList}) => {
     const router = useRouter();
     const [newTodo, setNewTodo] = useState("");
     const [toggle, setToggle] = useState(false);
     const [lock, setLock] = useState(false);
+    const [items, setTodoItems] = useState([]);
     const inputCheckRef = useRef();
     const inputTextRef = useRef();
+    useEffect(()=>{
+        const list = JSON.parse(todoList);
+        setTodoItems(list);
+    }, [todoList]);
     const onChangeTodoInputHandler = (event) => {
         if (event.target.value) {
             setNewTodo(event.target.value);
@@ -51,7 +57,7 @@ const TodoContainer = ({todoList}) => {
             inputTextRef.current.disabled = false;
         }
     }
-    const listItems = JSON.parse(todoList);
+
     const deleteAllItems = async () => {
         setLock(true);
         try {
@@ -109,10 +115,12 @@ const TodoContainer = ({todoList}) => {
                     />
                 </div>
             </form>
-            <div className="bg-white w-full rounded shadow-xl divide-y">
-               <TodoItem items={listItems} />
+            <div className="bg-white w-full rounded shadow-xl">
+                <Reorder.Group values={items} onReorder={setTodoItems} className="divide-y">
+                    <TodoItem items={items} />
+                </Reorder.Group>
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
-                    <span>{listItems.length} items Left</span>
+                    <span>{items.length} items Left</span>
                     <div className="flex gap-4 m-auto mv:hidden">
                         <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`} passHref>All</Link>
                         <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`} passHref>Active</Link>

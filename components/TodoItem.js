@@ -1,3 +1,4 @@
+import { Reorder } from "framer-motion";
 import { toast } from "react-toastify";
 
 const TodoItem = (props) => {
@@ -13,17 +14,17 @@ const TodoItem = (props) => {
                 }
             })
             if (result.ok || result.status === 202) {
-                toast('Todo is deleted successfully',{
-                    type:'success'
+                toast('Todo is deleted successfully', {
+                    type: 'success'
                 });
             } else {
-                toast('Failed to delete current todo',{
-                    type:'info'
+                toast('Failed to delete current todo', {
+                    type: 'info'
                 });
             }
         } catch (error) {
-            toast('Error during delete current todo',{
-                type:'error'
+            toast('Error during delete current todo', {
+                type: 'error'
             });
         }
     };
@@ -55,15 +56,15 @@ const TodoItem = (props) => {
         }
     }
     return props.items.map((value, index) => {
-        return <div className="item" key={value.id}>
+        return <Reorder.Item value={value} id={'item-' + index} key={value.id} className="item">
             <div className="flex">
                 <div className="relative">
-                    <input type="checkbox" id={'id'+ index} defaultChecked={value.isCompleted} onChange={(event) => onChangeHandler.call(null, event, value.id)}/>
-                    <label className="text-light-veryDarkGrayishBlue ml-8 inline align-middle" htmlFor={'id' + index}>{value.name}</label>
+                    <input type="checkbox" id={'done-' + index} defaultChecked={value.isCompleted} onChange={(event) => onChangeHandler.call(null, event, value.id)} />
+                    <label className="text-light-veryDarkGrayishBlue ml-8 inline align-middle" htmlFor={'done-' + index}>{value.name}</label>
                 </div>
                 <button className="delete" onClick={onDeleteHandler.bind(null, value.id)}>&#x2715;</button>
             </div>
-        </div>
+        </Reorder.Item>;
     })
 }
 

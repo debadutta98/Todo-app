@@ -10,7 +10,7 @@ body {
 }
 
 .item {
-    @apply p-4 cursor-pointer;
+    @apply p-4 cursor-move;
 }
 
 .delete {
