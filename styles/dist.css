@@ -732,6 +732,10 @@ body {
   color: hsl(235 19% 35% / var(--tw-text-opacity));
 }
 
+.dark .dark\:bg-desktop-dark{
+  background-image: url('../public/images/bg-desktop-dark.jpg');
+}
+
 @media (min-width: 640px){
   .md\:w-3\/4{
     width: 75%;

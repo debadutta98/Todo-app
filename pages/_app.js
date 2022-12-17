@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import style from "../styles/loading.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Provider from "../components/context";
 function Loading() {
   const [loading, setShowLoading] = useState(false);
   const router = useRouter();
@@ -40,7 +41,7 @@ function Loading() {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <Provider>
       <Loading />
       <Header />
       <ToastContainer />
@@ -48,7 +49,7 @@ function MyApp({ Component, pageProps }) {
       <footer className="text-center mt-6 text-xs text-light-darkGrayishBlue">
         Drag and drop to reorder list
       </footer>
-    </>
+    </Provider>
   );
 }
 

@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
 import TodoItem from "./TodoItem";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Reorder } from "framer-motion";
+import { useChangeMode } from "./context";
 const TodoContainer = ({todoList}) => {
     const router = useRouter();
     const [newTodo, setNewTodo] = useState("");
@@ -14,6 +15,7 @@ const TodoContainer = ({todoList}) => {
     const [items, setTodoItems] = useState([]);
     const inputCheckRef = useRef();
     const inputTextRef = useRef();
+    const ctx = useChangeMode();
     useEffect(()=>{
         const list = JSON.parse(todoList);
         setTodoItems(list);
@@ -83,11 +85,11 @@ const TodoContainer = ({todoList}) => {
         }
     };
     return (
-        <main className="flex flex-col relative z-10 w-[90%] sml:w-10/12 p-4 m-auto -mt-52 text-white gap-7 md:w-3/4 mdl:w-1/2">
+        <main className={`flex flex-col relative z-10 w-[90%] sml:w-10/12 p-4 m-auto -mt-52 text-white gap-7 md:w-3/4 mdl:w-1/2 ${!ctx.darkMode ? 'dark': ''}`}>
             <div className="inline-flex align-middle">
                 <h1 className="text-3xl font-bold tracking-widdest">TODO</h1>
                 <div className="ml-auto">
-                    <FontAwesomeIcon icon={faMoon} size={"2xl"} cursor="pointer" />
+                    <FontAwesomeIcon icon={!ctx.darkMode? faMoon: faSun} size={"2xl"} cursor="pointer" onClick={ctx.onChangeMode}/>
                 </div>
             </div>
             <form className="bg-white w-full p-4 rounded" onSubmit={onSubmitHandler}>
@@ -112,10 +114,11 @@ const TodoContainer = ({todoList}) => {
                         defaultValue={newTodo}
                         autoFocus={true}
                         ref={inputTextRef}
+                        minLength={5}
                     />
                 </div>
             </form>
-            <div className="bg-white w-full rounded shadow-xl">
+            <div className="bg-white w-full rounded shadow-xl divide-y">
                 <Reorder.Group values={items} onReorder={setTodoItems} className="divide-y">
                     <TodoItem items={items} />
                 </Reorder.Group>
