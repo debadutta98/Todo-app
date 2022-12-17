@@ -33,6 +33,12 @@ module.exports = {
           veryDarkGrayishBlueBold:'hsl(237, 14%, 26%)'
         },
         checkbox: 'linear-gradient(133deg, rgba(0,102,255,1) 3%, rgba(102,0,204,1) 72%)'
+      },
+      screens:{
+        sml:'534px',
+        md: '640px',
+        mdl: '890px',
+        mv: {max:'465px'}
       }
     },
   },

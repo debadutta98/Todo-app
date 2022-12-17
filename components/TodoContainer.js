@@ -77,7 +77,7 @@ const TodoContainer = ({todoList}) => {
         }
     };
     return (
-        <main className="flex flex-col relative z-10 w-1/2 p-4 m-auto -mt-52 text-white gap-7">
+        <main className="flex flex-col relative z-10 w-[90%] sml:w-10/12 p-4 m-auto -mt-52 text-white gap-7 md:w-3/4 mdl:w-1/2">
             <div className="inline-flex align-middle">
                 <h1 className="text-3xl font-bold tracking-widdest">TODO</h1>
                 <div className="ml-auto">
@@ -109,17 +109,24 @@ const TodoContainer = ({todoList}) => {
                     />
                 </div>
             </form>
-            <div className="bg-white w-full rounded shadow-md divide-y">
+            <div className="bg-white w-full rounded shadow-xl divide-y">
                <TodoItem items={listItems} />
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
                     <span>{listItems.length} items Left</span>
-                    <div className="flex gap-4 m-auto">
-                        <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`}>All</Link>
-                        <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`}>Active</Link>
-                        <Link href='/completed' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/completed' ? "text-[#0066ff]" : ''}`}>Completed</Link>
+                    <div className="flex gap-4 m-auto mv:hidden">
+                        <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`} passHref>All</Link>
+                        <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`} passHref>Active</Link>
+                        <Link href='/completed' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/completed' ? "text-[#0066ff]" : ''}`} passHref>Completed</Link>
                     </div>
-                    <button className='hover:font-bold truncate' onClick={deleteAllItems} disabled={lock}>Clear Completed</button>
+                    <button className='hover:font-bold truncate mv:ml-auto' onClick={deleteAllItems} disabled={lock}>Clear Completed</button>
                 </footer>
+            </div>
+            <div className="hidden mv:flex p-4 text-light-darkGrayishBlue gap-6 text-xs bg-white w-full rounded shadow-xl">
+                <div className="flex gap-4 m-auto">
+                    <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/' ? "text-[#0066ff]" : ''}`} passHref>All</Link>
+                    <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`} passHref>Active</Link>
+                    <Link href='/completed' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/completed' ? "text-[#0066ff]" : ''}`} passHref>Completed</Link>
+                </div>
             </div>
         </main>
     );
