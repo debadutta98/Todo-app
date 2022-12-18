@@ -9,8 +9,6 @@ import { Reorder } from "framer-motion";
 import { useChangeMode } from "./context";
 const TodoContainer = ({todoList}) => {
     const router = useRouter();
-    const [newTodo, setNewTodo] = useState("");
-    const [toggle, setToggle] = useState(false);
     const [lock, setLock] = useState(false);
     const [items, setTodoItems] = useState([]);
     const inputCheckRef = useRef();
@@ -36,12 +34,6 @@ const TodoContainer = ({todoList}) => {
             bodyEl.classList.add('bg-light-lightGrayishBlue1');
         }
     },[ctx.darkMode]);
-    const onChangeTodoInputHandler = (event) => {
-        if (event.target.value) {
-            setNewTodo(event.target.value);
-            setToggle(!toggle);
-        }
-    };
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         inputCheckRef.current.disabled = true;
@@ -71,13 +63,11 @@ const TodoContainer = ({todoList}) => {
                 toast('There is some issue');
             }
             inputCheckRef.current.checked = false;
-            setNewTodo('');
             inputTextRef.current.value = '';
         } catch (err) {
             toast('ohh! please try again');
         } finally {
             inputCheckRef.current.disabled = false;
-            setToggle(false);
             inputTextRef.current.disabled = false;
         }
     }
@@ -118,23 +108,11 @@ const TodoContainer = ({todoList}) => {
             <form className="bg-light-lightgray dark:bg-dark-veryDarkDesaturatedBlue w-full p-4 rounded" onSubmit={onSubmitHandler} autoComplete="off" autoCorrect="on">
                 <div className="relative inline">
                     <input type="checkbox" id="addTodo" ref={inputCheckRef} />
-                    <span
-                        className={`ml-8 align-middle ${toggle ? 'inline' : 'hidden'} cursor-pointer text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2`}
-                        onClick={() => {
-                            if (!inputTextRef.current.disabled){
-                                setToggle(!toggle);
-                            }
-                        }}
-                    >
-                        {newTodo}
-                    </span>
                     <input
                         type="text"
                         id="newTodoInput"
                         placeholder="Create a new todo..."
-                        className={`border-none outline-none text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2 ml-8 ${!toggle ? 'inline' : 'hidden'} bg-light-lightgray dark:bg-dark-veryDarkDesaturatedBlue`}
-                        onBlur={onChangeTodoInputHandler}
-                        defaultValue={newTodo}
+                        className={`border-none outline-none text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2 ml-8 inline bg-light-lightgray dark:bg-dark-veryDarkDesaturatedBlue`}
                         autoFocus={true}
                         ref={inputTextRef}
                         minLength={5}
@@ -143,10 +121,10 @@ const TodoContainer = ({todoList}) => {
             </form>
             <div className="bg-light-lightgray dark:bg-dark-veryDarkDesaturatedBlue w-full rounded shadow-xl divide-y dark:divide-dark-veryDarkGrayishBlue text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2">
                 <Reorder.Group values={items} onReorder={setTodoItems} className="divide-y dark:divide-dark-veryDarkGrayishBlue text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2">
-                    <TodoItem items={items} deleteItem={setTodoItems}/>
+                    <TodoItem items={items} setTodoItems={setTodoItems}/>
                 </Reorder.Group>
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
-                    <span>{items.length} items Left</span>
+                    <span>{items.length!==0 ? items.filter(value=>!value.isCompleted).length : items.length} items Left</span>
                     <div className="flex gap-4 m-auto mv:hidden">
                         <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`} passHref>All</Link>
                         <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`} passHref>Active</Link>

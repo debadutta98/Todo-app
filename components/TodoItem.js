@@ -17,7 +17,7 @@ const TodoItem = (props) => {
                 toast('Todo is deleted successfully', {
                     type: 'success'
                 });
-                props.deleteItem((items) => items.filter(value => (value.id !== id)))
+                props.setTodoItems((items) => items.filter(value => (value.id !== id)))
             } else {
                 toast('Failed to delete current todo', {
                     type: 'info'
@@ -45,14 +45,26 @@ const TodoItem = (props) => {
                 toast('Todo is updated successfully', {
                     type: 'success'
                 });
+                props.setTodoItems((items) => {
+                    const changeItems = items.map(value => { if (value.id === id) { value.isCompleted = event.target.checked }});
+                    return [...changeItems];
+                });
             } else {
                 toast('Failed to update current todo', {
                     type: 'error'
+                });
+                props.setTodoItems((items) => {
+                    const changeItems = items.map(value => { if (value.id === id) { value.isCompleted = !event.target.checked } });
+                    return [...changeItems];
                 });
             }
         } catch (error) {
             toast('Error during updating current todo', {
                 type: 'error'
+            });
+            props.setTodoItems((items) => {
+                const changeItems = items.map(value => { if (value.id === id) { value.isCompleted = !event.target.checked } });
+                return [...changeItems];
             });
         }
     }
