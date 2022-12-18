@@ -124,7 +124,7 @@ const TodoContainer = ({todoList}) => {
                     <TodoItem items={items} setTodoItems={setTodoItems}/>
                 </Reorder.Group>
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
-                    <span>{items.length!==0 ? items.filter(value=>(!value.isCompleted)).length : items.length} items Left</span>
+                    <span>{(Array.isArray(items) && items.length!==0) ? items.filter(value=>(!value.isCompleted)).length : items.length} items Left</span>
                     <div className="flex gap-4 m-auto mv:hidden">
                         <Link href='/' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/'? "text-[#0066ff]" : ''}`} passHref>All</Link>
                         <Link href='/active' className={`hover:text-light-veryDarkGrayishBlue font-bold ${router.asPath === '/active' ? "text-[#0066ff]" : ''}`} passHref>Active</Link>
