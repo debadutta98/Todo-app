@@ -11,7 +11,7 @@ export default function handler(req, res) {
             const result = await todoDoc.save();
             if (result && result._id) {
                 await db.disconnect()
-                res.status(201).json({ message: 'doc is successfully saved' });
+                res.status(201).json({ _id: result._id, name: result.name , isCompleted: result.isCompleted});
             } else {
                 await db.disconnect()
                 res.status(400).json({ message: 'getting error while creating document' });

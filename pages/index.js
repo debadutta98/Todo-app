@@ -25,6 +25,6 @@ export async function getStaticProps() {
     props: {
       todoList: JSON.stringify(modifiedRecordsId)
     },
-    revalidate: 1
+    revalidate: 10
   }
 }

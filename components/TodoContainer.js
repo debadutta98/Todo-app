@@ -60,7 +60,13 @@ const TodoContainer = ({todoList}) => {
                 }
             });
             if (result.ok || result.status === 201) {
+                const data = await result.json();
                 toast('Todo is created successfully');
+                setTodoItems(items=>[...items, {
+                    id: data._id,
+                    name: data.name,
+                    isCompleted: data.isCompleted
+                }])
             } else {
                 toast('There is some issue');
             }
