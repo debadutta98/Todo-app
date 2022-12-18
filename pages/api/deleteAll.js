@@ -10,7 +10,7 @@ export default async function handler(req,res) {
         .catch((err)=>{
             console.log(err);
         });
-        await TodoModal.deleteMany().then(()=>{
+        await TodoModal.deleteMany({ isCompleted: true}).then(()=>{
             res.status(202).end();
         }).catch((err)=>{
             console.log(err);
