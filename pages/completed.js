@@ -24,7 +24,6 @@ export async function getServerSideProps() {
     return {
         props: {
             todoList: JSON.stringify(modifiedRecordsId)
-        },
-        revalidate: 5
+        }
     }
 }
