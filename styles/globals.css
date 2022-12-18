@@ -5,6 +5,7 @@
 
 body {
     font-family: Josefin Sans;
+    position: relative;
     font-size: 18px;
     @apply bg-light-lightgray;
 }

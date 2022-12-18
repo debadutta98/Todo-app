@@ -714,6 +714,7 @@ video {
 
 body {
   font-family: Josefin Sans;
+  position: relative;
   font-size: 18px;
   --tw-bg-opacity: 1;
   background-color: hsl(0 0% 98% / var(--tw-bg-opacity));
