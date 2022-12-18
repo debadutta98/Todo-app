@@ -631,7 +631,7 @@ video {
 }
 
 .bg-desktop-light{
-  background-image: url('../public/images/bg-desktop-light.jpg');
+  background-image: url('/images/bg-desktop-light.jpg');
 }
 
 .bg-cover{
@@ -708,6 +708,10 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.filter{
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 body {
   font-family: Josefin Sans;
   font-size: 18px;
@@ -753,7 +757,7 @@ body {
 }
 
 .dark .dark\:bg-desktop-dark{
-  background-image: url('../public/images/bg-desktop-dark.jpg');
+  background-image: url('/images/bg-desktop-dark.jpg');
 }
 
 .dark .dark\:text-light-lightGrayishBlue2{

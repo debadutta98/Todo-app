@@ -97,6 +97,7 @@ const TodoContainer = ({todoList}) => {
                     type: 'error'
                 });
             }
+            setTodoItems([])
         } catch(err){
             console.log(err);
             toast('Error please try again!!',{
@@ -142,7 +143,7 @@ const TodoContainer = ({todoList}) => {
             </form>
             <div className="bg-light-lightgray dark:bg-dark-veryDarkDesaturatedBlue w-full rounded shadow-xl divide-y dark:divide-dark-veryDarkGrayishBlue text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2">
                 <Reorder.Group values={items} onReorder={setTodoItems} className="divide-y dark:divide-dark-veryDarkGrayishBlue text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2">
-                    <TodoItem items={items} />
+                    <TodoItem items={items} deleteItem={setTodoItems}/>
                 </Reorder.Group>
                 <footer className="flex p-4 text-light-darkGrayishBlue gap-6 text-xs">
                     <span>{items.length} items Left</span>

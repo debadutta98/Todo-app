@@ -17,6 +17,7 @@ const TodoItem = (props) => {
                 toast('Todo is deleted successfully', {
                     type: 'success'
                 });
+                props.deleteItem((items) => items.filter(value => (value.id !== id)))
             } else {
                 toast('Failed to delete current todo', {
                     type: 'info'
