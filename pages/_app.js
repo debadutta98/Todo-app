@@ -1,4 +1,4 @@
-import Header from "../Components/Header";
+import Header from "../components/Header";
 import "../styles/dist.css";
 import "../styles/customCheckBox.css";
 import "react-toastify/dist/ReactToastify.css";
