@@ -601,6 +601,11 @@ video {
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
+.divide-yellow-500 > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-opacity: 1;
+  border-color: rgb(234 179 8 / var(--tw-divide-opacity));
+}
+
 .truncate{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -618,6 +623,26 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-light-lightGrayishBlue2{
+  --tw-bg-opacity: 1;
+  background-color: hsl(233 11% 84% / var(--tw-bg-opacity));
+}
+
+.bg-dark-veryDarkBlue{
+  --tw-bg-opacity: 1;
+  background-color: hsl(235 21% 11% / var(--tw-bg-opacity));
+}
+
+.bg-light-lightGrayishBlue1{
+  --tw-bg-opacity: 1;
+  background-color: hsl(236 33% 92% / var(--tw-bg-opacity));
+}
+
+.bg-light-lightgray{
+  --tw-bg-opacity: 1;
+  background-color: hsl(0 0% 98% / var(--tw-bg-opacity));
 }
 
 .bg-desktop-light{
@@ -658,6 +683,10 @@ video {
   font-weight: 700;
 }
 
+.capitalize{
+  text-transform: capitalize;
+}
+
 .tracking-widdest{
   letter-spacing: 0.5em;
 }
@@ -680,6 +709,11 @@ video {
 .text-\[\#0066ff\]{
   --tw-text-opacity: 1;
   color: rgb(0 102 255 / var(--tw-text-opacity));
+}
+
+.text-light-lightgray{
+  --tw-text-opacity: 1;
+  color: hsl(0 0% 98% / var(--tw-text-opacity));
 }
 
 .shadow-xl{
@@ -732,8 +766,38 @@ body {
   color: hsl(235 19% 35% / var(--tw-text-opacity));
 }
 
+.dark .dark\:divide-dark-darkGrayishBlue > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-opacity: 1;
+  border-color: hsl(234 11% 52% / var(--tw-divide-opacity));
+}
+
+.dark .dark\:divide-dark-veryDarkGrayishBlue > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-opacity: 1;
+  border-color: hsl(233 14% 35% / var(--tw-divide-opacity));
+}
+
+.dark .dark\:bg-dark-veryDarkDesaturatedBlue{
+  --tw-bg-opacity: 1;
+  background-color: hsl(235 24% 19% / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-dark-veryDarkGrayishBlueBold{
+  --tw-bg-opacity: 1;
+  background-color: hsl(237 14% 26% / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-light-lightGrayishBlue2{
+  --tw-bg-opacity: 1;
+  background-color: hsl(233 11% 84% / var(--tw-bg-opacity));
+}
+
 .dark .dark\:bg-desktop-dark{
   background-image: url('../public/images/bg-desktop-dark.jpg');
+}
+
+.dark .dark\:text-light-lightGrayishBlue2{
+  --tw-text-opacity: 1;
+  color: hsl(233 11% 84% / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px){

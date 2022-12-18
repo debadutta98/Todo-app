@@ -60,7 +60,7 @@ const TodoItem = (props) => {
             <div className="flex">
                 <div className="relative">
                     <input type="checkbox" id={'done-' + index} defaultChecked={value.isCompleted} onChange={(event) => onChangeHandler.call(null, event, value.id)} />
-                    <label className="text-light-veryDarkGrayishBlue ml-8 inline align-middle" htmlFor={'done-' + index}>{value.name}</label>
+                    <label className="text-light-veryDarkGrayishBlue dark:text-light-lightGrayishBlue2 ml-8 inline align-middle" htmlFor={'done-' + index}>{value.name}</label>
                 </div>
                 <button className="delete" onClick={onDeleteHandler.bind(null, value.id)}>&#x2715;</button>
             </div>
