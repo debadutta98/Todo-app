@@ -631,7 +631,7 @@ video {
 }
 
 .bg-desktop-light{
-  background-image: url(../public/images/bg-desktop-light.jpg);
+  background-image: url('../public/images/bg-desktop-light.jpg');
 }
 
 .bg-cover{

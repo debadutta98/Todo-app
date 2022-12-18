@@ -6,7 +6,7 @@ export default function CompletedTodos({ todoList }) {
     return <TodoContainer todoList={todoList} />
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     await mongoose.connect(process.env.DB_URL).then(() => {
         console.log('monodb connected');
     }).catch((err) => {
